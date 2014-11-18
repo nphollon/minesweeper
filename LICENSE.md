@@ -1,5 +1,4 @@
-Minesweeper command-line guessing game
-Copyright (C) 2014 Nick Hollon
+Copyright (C) 2014 ThoughtWorks, Inc.
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
