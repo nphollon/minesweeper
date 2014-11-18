@@ -1,6 +1,8 @@
 package minesweeper;
 
 import java.util.List;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public class Minefield {
     private List<List<Cell>> cells;
@@ -36,16 +38,11 @@ public class Minefield {
     }
 
     public String toString() {
-        String display = "";
+        return concat(cells, row -> concat(row, Cell::toString, ""), "\n");
+    }
 
-        for (List<Cell> row : cells) {
-            for (Cell cell : row) {
-                display += cell.toString();
-            }
-            display += "\n";
-        }
-
-        return display;
+    private <T> String concat(List<T> list, Function<T, String> function, String delimiter) {
+        return list.stream().map(function).collect(Collectors.joining(delimiter));
     }
 
     private Cell getCell(final int x, final int y) {

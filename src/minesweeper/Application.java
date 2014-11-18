@@ -3,25 +3,21 @@ package minesweeper;
 import java.util.Scanner;
 
 public class Application {
-    static final Scanner scanner = new Scanner(System.in);
-
     public static void main(String[] args) {
+        final Scanner scanner = new Scanner(System.in);
+
         System.out.println("Enter the minefield layout: ");
-        Minefield mines = MinefieldFactory.build(getInputLine());
+        Minefield mines = MinefieldFactory.build(scanner.nextLine());
 
         while (mines.getState() == Minefield.State.MYSTERIOUS) {
+            System.out.println(mines);
             System.out.println("Enter option: ");
-            String userCommand = getInputLine();
-            Command command = CommandFactory.build(userCommand);
+            Command command = CommandFactory.build(scanner.nextLine());
             command.updateMinefield(mines);
-            System.out.println(mines.toString());
         }
 
-        System.out.println(mines.toString());
+        System.out.println(mines);
         System.out.println(mines.getMessage());
     }
 
-    private static String getInputLine() {
-        return scanner.nextLine();
-    }
 }

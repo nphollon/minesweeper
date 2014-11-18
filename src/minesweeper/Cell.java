@@ -9,14 +9,6 @@ public class Cell {
         this.state = State.MYSTERIOUS;
     }
 
-    public boolean equals(Object obj) {
-        if (obj == null || !(obj instanceof Cell)) {
-            return false;
-        }
-        Cell otherCell = (Cell) obj;
-        return (armed == otherCell.armed) && (state == otherCell.state);
-    }
-
     public void open() {
         state = armed ? State.DETONATED : State.CLEAR;
     }
@@ -33,8 +25,24 @@ public class Cell {
         return state == State.MYSTERIOUS || (state == State.FLAGGED && !armed);
     }
 
+    @Override
     public String toString() {
         return state.symbol;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        final Cell cell = (Cell) o;
+
+        return armed == cell.armed && state == cell.state;
+    }
+
+    @Override
+    public int hashCode() {
+        return (31 * (armed ? 1 : 0)) + state.hashCode();
     }
 
     public static enum State {

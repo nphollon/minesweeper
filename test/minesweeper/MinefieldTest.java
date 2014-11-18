@@ -73,7 +73,7 @@ public class MinefieldTest {
     public void mysteriousCellShouldDisplayX() {
         Minefield minefield = MinefieldFactory.build("x");
 
-        assertThat(minefield.toString(), is("x\n"));
+        assertThat(minefield.toString(), is("x"));
     }
 
     @Test
@@ -81,7 +81,7 @@ public class MinefieldTest {
         Minefield minefield = MinefieldFactory.build("x");
         minefield.open(0, 0);
 
-        assertThat(minefield.toString(), is("0\n"));
+        assertThat(minefield.toString(), is("0"));
     }
 
     @Test
@@ -89,7 +89,7 @@ public class MinefieldTest {
         Minefield minefield = MinefieldFactory.build("m");
         minefield.open(0, 0);
 
-        assertThat(minefield.toString(), is("m\n"));
+        assertThat(minefield.toString(), is("m"));
     }
 
     @Test
@@ -97,7 +97,7 @@ public class MinefieldTest {
         Minefield minefield = MinefieldFactory.build("m");
         minefield.flag(0, 0);
 
-        assertThat(minefield.toString(), is("f\n"));
+        assertThat(minefield.toString(), is("f"));
     }
 
     @Test
@@ -107,6 +107,6 @@ public class MinefieldTest {
         minefield.flag(0, 0);
         minefield.open(0, 1);
 
-        assertThat(minefield.toString(), is("fxx\nmxx\nxx0\n"));
+        assertThat(minefield.toString(), is("fxx\nmxx\nxx0"));
     }
 }
